@@ -4,11 +4,14 @@
  */
 package ex10;
 
+import java.util.Scanner;
 /*
 Exercise 10 - Self-Checkout
 Working with multiple inputs and currency can introduce some tricky precision issues.
 
-Create a simple self-checkout system. Prompt for the prices and quantities of three items. Calculate the subtotal of the items. Then calculate the tax using a tax rate of 5.5%. Print out the line items with the quantity and total, and then print out the subtotal, tax amount, and total.
+Create a simple self-checkout system. Prompt for the prices and quantities of three items. Calculate the subtotal of the items.
+Then calculate the tax using a tax rate of 5.5%.
+Print out the line items with the quantity and total, and then print out the subtotal, tax amount, and total.
 
 Example Output
 
@@ -33,6 +36,41 @@ Alter the program so that an indeterminate number of items can be entered. The t
 
 public class App {
     public static void main(String[] args) {
-        
+        Scanner in = new Scanner(System.in);
+
+        //input
+        // item 1
+        System.out.print("Enter the price of item 1: ");
+        String item1Price = in.nextLine();
+        System.out.print("Enter the quantity of item 1: ");
+        String item1Quantity = in.nextLine();
+        // item 2
+        System.out.print("Enter the price of item 2: ");
+        String item2Price = in.nextLine();
+        System.out.print("Enter the quantity of item 2: ");
+        String item2Quantity = in.nextLine();
+        // item 3
+        System.out.print("Enter the price of item 3: ");
+        String item3Price = in.nextLine();
+        System.out.print("Enter the quantity of item 3: ");
+        String item3Quantity = in.nextLine();
+
+        // converting strings to doubles
+        //prices
+        double item1P = Double.parseDouble(item1Price);
+        double item2P = Double.parseDouble(item2Price);
+        double item3P = Double.parseDouble(item3Price);
+        // quantities
+        double item1Q = Double.parseDouble(item1Quantity);
+        double item2Q = Double.parseDouble(item2Quantity);
+        double item3Q = Double.parseDouble(item3Quantity);
+
+        // calculations
+        double subtotal = ((item1P*item1Q) + (item2P*item2Q) + (item3P*item3Q));
+        double tax = 0.055 * subtotal;
+        double total = subtotal + tax;
+
+        // output
+        System.out.printf("Subtotal: $%.2f\nTax: $%.2f\nTotal: $%.2f\n", subtotal, tax, total);
     }
 }
